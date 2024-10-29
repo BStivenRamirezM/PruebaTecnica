@@ -20,7 +20,7 @@ public class HorarioDisponibleController {
         return ResponseEntity.ok(createdHorario);
     }
 
-    @GetMapping("/horarios/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<HorarioDisponible> getHorarioDisponibleById(@PathVariable Long id) {
         HorarioDisponible horarioDisponible = horarioDisponibleService.getHorarioDisponibleById(id);
         return horarioDisponible != null ? ResponseEntity.ok(horarioDisponible) : ResponseEntity.notFound().build();
@@ -32,14 +32,14 @@ public class HorarioDisponibleController {
         return ResponseEntity.ok(horarios);
     }
 
-    @PutMapping("/horarios/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<HorarioDisponible> updateHorarioDisponible(@PathVariable Long id, @RequestBody HorarioDisponible horarioDisponible) {
         horarioDisponible.setId(id);
         HorarioDisponible updatedHorario = horarioDisponibleService.updateHorarioDisponible(horarioDisponible);
         return ResponseEntity.ok(updatedHorario);
     }
 
-    @DeleteMapping("/Horario/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHorarioDisponible(@PathVariable Long id) {
         horarioDisponibleService.deleteHorarioDisponible(id);
         return ResponseEntity.noContent().build();

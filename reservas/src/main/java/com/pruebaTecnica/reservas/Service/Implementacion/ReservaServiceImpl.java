@@ -1,4 +1,5 @@
 package com.pruebaTecnica.reservas.Service.Implementacion;
+
 import com.pruebaTecnica.reservas.Entity.Reserva;
 import com.pruebaTecnica.reservas.RespositoryDAO.ReservaRepository;
 import com.pruebaTecnica.reservas.Service.ReservaService;
@@ -38,8 +39,4 @@ public class ReservaServiceImpl implements ReservaService {
         return reservaRepository.save(reserva);
     }
 
-    @Override
-    public List<Reserva> getReservasByUserId(Long userId) {
-        return reservaRepository.findByUser_Id(userId);
-    }
 }

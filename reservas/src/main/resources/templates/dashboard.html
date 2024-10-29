@@ -6,27 +6,8 @@
 </head>
 <body>
 <div class="dashboard-container">
-    <h1>Reservas</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>ID Reserva</th>
-            <th>Usuario</th>
-            <th>Servicio</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="reserva : ${reservas}">
-            <td th:text="${reserva.id}"></td>
-            <td th:text="${reserva.user.username}"></td>
-            <td th:text="${reserva.servicio.nombre}"></td>
-            <td th:text="${reserva.fecha}"></td>
-            <td th:text="${reserva.hora}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <h1>Welcome to the Dashboard</h1>
+    <p>Usuario autenticado con éxito.</p>
     <a href="/logout">Logout</a>
 </div>
 </body>

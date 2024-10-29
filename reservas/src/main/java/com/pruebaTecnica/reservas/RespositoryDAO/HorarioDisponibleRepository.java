@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HorarioDisponibleRepository extends JpaRepository<HorarioDisponible, Long> {
-    // Puedes agregar métodos personalizados aquí si es necesario
+
 }

@@ -1,4 +1,5 @@
 package com.pruebaTecnica.reservas.Controllers;
+
 import com.pruebaTecnica.reservas.Entity.Reserva;
 import com.pruebaTecnica.reservas.Service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ReservaController {
         return ResponseEntity.ok(createdReserva);
     }
 
-    @GetMapping("/reservas/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Reserva> getReservaById(@PathVariable Long id) {
         Reserva reserva = reservaService.getReservaById(id);
         return reserva != null ? ResponseEntity.ok(reserva) : ResponseEntity.notFound().build();
@@ -32,14 +33,14 @@ public class ReservaController {
         return ResponseEntity.ok(reservas);
     }
 
-    @PutMapping("/reservas/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Reserva> updateReserva(@PathVariable Long id, @RequestBody Reserva reserva) {
         reserva.setId(id);
         Reserva updatedReserva = reservaService.updateReserva(reserva);
         return ResponseEntity.ok(updatedReserva);
     }
 
-    @DeleteMapping("/reservas/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReserva(@PathVariable Long id) {
         reservaService.deleteReserva(id);
         return ResponseEntity.noContent().build();

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ServicioRepository extends JpaRepository<Servicio, Long> {
-    // Puedes agregar métodos personalizados aquí si es necesario
+
 }

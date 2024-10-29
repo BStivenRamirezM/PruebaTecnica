@@ -65,3 +65,39 @@ a {
 a:hover {
     text-decoration: underline;
 }
+/* Estilos para el contenedor de index */
+.index-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    margin: auto;
+}
+
+.index-container h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.index-container p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Estilo del botón */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5c67f2;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #4b53d1;
+}

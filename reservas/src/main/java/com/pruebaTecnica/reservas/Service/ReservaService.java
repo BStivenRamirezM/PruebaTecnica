@@ -10,7 +10,6 @@ public interface ReservaService {
     List<Reserva> getAllReservas();
     void deleteReserva(Long id);
     Reserva updateReserva(Reserva reserva);
-    List<Reserva> getReservasByUserId(Long userId);
 }
 
 
