@@ -15,6 +15,11 @@ public interface UserService {
     void deleteUser(Long id);
 
     User updateUser(User user);
+
+    User findByNombreUsuario(String nombreUsuario);
+
+    User authenticate(String nombreUsuario, String contrasena);
+
 }
 
 

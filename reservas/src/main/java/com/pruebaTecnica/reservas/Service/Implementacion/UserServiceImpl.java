@@ -38,4 +38,18 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user) {
         return userRepository.save(user);
     }
+
+    @Override
+    public User findByNombreUsuario(String nombreUsuario) {
+        return userRepository.findByNombreUsuario(nombreUsuario);
+    }
+
+    @Override
+    public User authenticate(String nombreUsuario, String contrasena) {
+        User user = findByNombreUsuario(nombreUsuario);
+        if (user != null && user.getContrasena().equals(contrasena)) {
+            return user; // Autenticación exitosa
+        }
+        return null; // Autenticación fallida
+    }
 }
