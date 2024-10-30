@@ -25,6 +25,12 @@ public class LoginController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/crear_usuario") // Nuevo método para manejar la ruta
+    public String crearUsuario() {
+        return "crear_usuario"; // Devuelve la vista crear_usuario.html
+    }
+
     @PostMapping("/login")
     public String login(
             @RequestParam("username") String nombreUsuario,
@@ -48,5 +54,4 @@ public class LoginController {
             return "login"; // Volver a la página de inicio de sesión si las credenciales no son válidas
         }
     }
-
 }

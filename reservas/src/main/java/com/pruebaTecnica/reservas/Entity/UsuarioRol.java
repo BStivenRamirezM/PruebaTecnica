@@ -1,10 +1,10 @@
 package com.pruebaTecnica.reservas.Entity;
 
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuario_rol")
+@IdClass(UsuarioRolId.class)
 public class UsuarioRol {
 
     @Id
