@@ -1,9 +1,11 @@
 package com.pruebaTecnica.reservas.Controllers;
 
 import com.pruebaTecnica.reservas.Entity.Reserva;
+import com.pruebaTecnica.reservas.Entity.User;
 import com.pruebaTecnica.reservas.Service.Implementacion.ReservaServiceImpl;
 import com.pruebaTecnica.reservas.Service.ReservaService;
 import com.pruebaTecnica.reservas.Service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,19 +24,27 @@ public class DashboardController {
     private UserService userService;
 
     @GetMapping("/dashboard")
-    public String dashboard(Principal principal, Model model) {
-        String username = principal.getName();
-        String rol = userService.getRolByUsername(username); // Obtener el rol del usuario
+    public String dashboard(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
 
-        List<Reserva> reservas;
-        if ("admin".equals(rol)) {
-            reservas = reservaService.getAllReservas(); // Obtener todas las reservas
-        } else {
-            reservas = reservaService.getReservasByUsuario(username); // Obtener solo las reservas del usuario
+        if (user == null) {
+            return "redirect:/login";
         }
 
-        model.addAttribute("reservas", reservas);
+        model.addAttribute("usuario", user);
         return "dashboard";
+    }
+
+    @GetMapping("/userDashboard")
+    public String userDashboard(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("usuario", user);
+        return "userDashboard"; // crear otro html para usuario normales
     }
 
 }

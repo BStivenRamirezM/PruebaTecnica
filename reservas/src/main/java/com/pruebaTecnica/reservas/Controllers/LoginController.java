@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class LoginController {
 
     @Autowired
     private UserServiceImpl userService;
-
 
     @GetMapping("/login")
     public String login() {
@@ -27,7 +25,6 @@ public class LoginController {
     public String index() {
         return "index";
     }
-
     @PostMapping("/login")
     public String login(
             @RequestParam("username") String nombreUsuario,
@@ -39,10 +36,17 @@ public class LoginController {
 
         if (user != null) {
             session.setAttribute("user", user); // Guardar usuario en la sesión
-            return "redirect:/dashboard"; // Redirigir al dashboard
+
+            // Verificar si el usuario es administrador
+            if (user.esAdministrador()) {
+                return "redirect:/dashboard"; // Redirigir al dashboard si es admin
+            } else {
+                return "redirect:/userDashboard"; // Redirigir a una vista diferente para usuarios normales
+            }
         } else {
             model.addAttribute("error", "Credenciales inválidas");
-            return "login"; // Volver a la página de inicio de sesión
+            return "login"; // Volver a la página de inicio de sesión si las credenciales no son válidas
         }
     }
+
 }

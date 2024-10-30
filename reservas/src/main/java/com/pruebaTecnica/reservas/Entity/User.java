@@ -65,4 +65,8 @@ public class User {
     public void setUsuarioRols(Set<UsuarioRol> usuarioRols) {
         this.usuarioRols = usuarioRols;
     }
+
+    public boolean esAdministrador() {
+        return usuarioRols.stream().anyMatch(rol -> rol.getRol().getId() == 1); // Suponiendo que 1 es el ID de admin
+    }
 }
