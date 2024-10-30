@@ -39,4 +39,10 @@ public class ReservaServiceImpl implements ReservaService {
         return reservaRepository.save(reserva);
     }
 
+
+    @Override
+    public List<Reserva> getReservasByUsuario(String nombreUsuario) {
+        return reservaRepository.findByUsuario_NombreUsuario(nombreUsuario);
+    }
+
 }

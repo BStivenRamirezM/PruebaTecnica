@@ -20,6 +20,8 @@ public interface UserService {
 
     User authenticate(String nombreUsuario, String contrasena);
 
+    String getRolByUsername(String nombreUsuario);
+
 }
 
 

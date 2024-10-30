@@ -48,8 +48,14 @@ public class UserServiceImpl implements UserService {
     public User authenticate(String nombreUsuario, String contrasena) {
         User user = findByNombreUsuario(nombreUsuario);
         if (user != null && user.getContrasena().equals(contrasena)) {
-            return user; // Autenticación exitosa
+            return user;
         }
-        return null; // Autenticación fallida
+        return null;
+    }
+
+    @Override
+    public String getRolByUsername(String nombreUsuario) {
+        return userRepository.getRolByUsername(nombreUsuario);
     }
 }
+

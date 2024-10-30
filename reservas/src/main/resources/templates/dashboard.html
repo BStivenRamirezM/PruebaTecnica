@@ -6,9 +6,26 @@
 </head>
 <body>
 <div class="dashboard-container">
-    <h1>Welcome to the Dashboard</h1>
-    <p>Usuario autenticado con éxito.</p>
-    <a href="/index">Logout</a>
+    <h1>Reservas</h1>
+    <table>
+        <thead>
+        <tr>
+
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Detalles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reserva : ${reservas}">
+            <td th:text="${reserva.usuario.username}"></td>
+            <td th:text="${reserva.fecha}"></td>
+            <td th:text="${reserva.hora}"></td>
+            <td th:text="${reserva.detalles}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
