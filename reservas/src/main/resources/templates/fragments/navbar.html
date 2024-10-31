@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar">
+  <ul>
+    <li><a th:href="@{/index}">Inicio</a></li>
+    <li th:if="${session.user}"><a th:href="@{/crear-reserva}">Crear Reserva</a></li>
+    <li th:if="${session.user != null && session.user.esAdministrador()}"><a th:href="@{/dashboard}">Dashboard</a></li>
+    <li th:if="${session.user == null}"><a th:href="@{/login}">Iniciar Sesión</a></li>
+    <li th:if="${session.user != null}"><a th:href="@{/index}">Cerrar Sesión</a></li>
+  </ul>
+</nav>
+</body>
+</html>

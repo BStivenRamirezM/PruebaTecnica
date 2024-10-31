@@ -1,7 +1,9 @@
 package com.pruebaTecnica.reservas.Controllers;
 
 import com.pruebaTecnica.reservas.Entity.Reserva;
+import com.pruebaTecnica.reservas.Entity.User;
 import com.pruebaTecnica.reservas.Service.ReservaService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -65,5 +67,14 @@ public class ReservaController {
     public ResponseEntity<List<Reserva>> getReservasByUsuario(@PathVariable String nombreUsuario) {
         List<Reserva> reservas = reservaService.getReservasByUsuario(nombreUsuario);
         return ResponseEntity.ok(reservas);
+    }
+
+    @GetMapping("/crear-reserva")
+    public String crearReserva(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        return "crear-reserva";
     }
 }

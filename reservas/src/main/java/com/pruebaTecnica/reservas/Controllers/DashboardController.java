@@ -21,14 +21,11 @@ public class DashboardController {
     private UserService userService;
 
     @GetMapping("/dashboard")
-    public String dashboard(HttpSession session, Model model) {
+    public String dashboard(HttpSession session) {
         User user = (User) session.getAttribute("user");
-
-        if (user == null) {
+        if (user == null || !user.esAdministrador()) {
             return "redirect:/login";
         }
-
-        model.addAttribute("usuario", user);
         return "dashboard";
     }
 

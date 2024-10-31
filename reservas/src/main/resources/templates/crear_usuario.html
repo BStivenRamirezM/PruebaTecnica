@@ -8,6 +8,7 @@
     <script src="/JS/usuarios.js" defer></script>
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="user-form-container">
     <h1>Crear Usuario</h1>
     <form id="userForm" action="/api/users" method="POST">
