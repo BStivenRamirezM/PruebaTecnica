@@ -142,6 +142,7 @@ function deleteUser(userId) {
 
 // Función para abrir el modal de edición de usuario
 function openEditModal(userId) {
+    console.log(`Abriendo modal para el usuario con ID: ${userId}`);
     fetch(`/api/users/user/${userId}`)
         .then(response => {
             if (!response.ok) {
@@ -161,6 +162,7 @@ function openEditModal(userId) {
             console.error('Hubo un problema con la petición Fetch:', error);
         });
 }
+
 
 // Llamada para cargar usuarios al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
