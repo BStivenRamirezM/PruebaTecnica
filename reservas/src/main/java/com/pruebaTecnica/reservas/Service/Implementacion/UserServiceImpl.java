@@ -19,21 +19,19 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository; // Inyectar el repositorio de roles
+    private RoleRepository roleRepository;
 
     @Autowired
-    private UsuarioRolRepository usuarioRolRepository; // Inyectar el repositorio de UsuarioRol
+    private UsuarioRolRepository usuarioRolRepository;
 
     @Override
     public User saveUser(User user) {
-        // Guardar el usuario
+
         User savedUser = userRepository.save(user);
 
-        // Obtener el rol por defecto (ID = 2)
         Role defaultRole = roleRepository.findById(2L)
                 .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
 
-        // Crear y guardar la relación UsuarioRol
         UsuarioRol usuarioRol = new UsuarioRol();
         usuarioRol.setUsuario(savedUser);
         usuarioRol.setRol(defaultRole);
@@ -41,11 +39,6 @@ public class UserServiceImpl implements UserService {
 
         return savedUser;
     }
-
-//    @Override
-//    public User saveUser(User user) {
-//        return userRepository.save(user);
-//    }
 
     @Override
     public User getUserById(Long id) {

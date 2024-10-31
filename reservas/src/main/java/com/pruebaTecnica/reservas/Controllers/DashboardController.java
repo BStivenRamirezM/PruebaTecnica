@@ -1,8 +1,6 @@
 package com.pruebaTecnica.reservas.Controllers;
 
-import com.pruebaTecnica.reservas.Entity.Reserva;
 import com.pruebaTecnica.reservas.Entity.User;
-import com.pruebaTecnica.reservas.Service.Implementacion.ReservaServiceImpl;
 import com.pruebaTecnica.reservas.Service.ReservaService;
 import com.pruebaTecnica.reservas.Service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -11,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.Principal;
-import java.util.List;
+
 
 @Controller
 public class DashboardController {

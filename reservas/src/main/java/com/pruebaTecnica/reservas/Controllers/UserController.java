@@ -17,11 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping("/create")
-//    public ResponseEntity<User> createUser(@RequestBody User user) {
-//        User createdUser = userService.saveUser(user);
-//        return ResponseEntity.ok(createdUser);
-//    }
 
     @PostMapping("/createUser")
     public ResponseEntity<?> createUser(@RequestBody User user) {
@@ -44,19 +39,23 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    @PostMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-
         User existingUser = userService.getUserById(id);
         if (existingUser == null) {
             return ResponseEntity.notFound().build(); // Devuelve 404 si no se encuentra
         }
 
         user.setId(id);
-        User updatedUser = userService.updateUser(user); // Aquí llamas a tu servicio para actualizar
+
+
+        if (user.getContrasena() == null || user.getContrasena().isEmpty()) {
+            user.setContrasena(existingUser.getContrasena());
+        }
+
+        User updatedUser = userService.updateUser(user);
         return ResponseEntity.ok(updatedUser);
     }
-
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
