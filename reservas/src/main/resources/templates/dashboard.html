@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <div class="dashboard-container">
-    <h1>Reservas</h1>
-    <table>
+    <h1>Dashboard de Usuarios</h1>
+    <h2>Usuarios Registrados</h2>
+    <table id="usuariosTable">
         <thead>
         <tr>
-
-            <th>Usuario</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Detalles</th>
+            <th>Nombre de Usuario</th>
+            <th>Email</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="reserva : ${reservas}">
-            <td th:text="${reserva.usuario.username}"></td>
-            <td th:text="${reserva.fecha}"></td>
-            <td th:text="${reserva.hora}"></td>
-            <td th:text="${reserva.detalles}"></td>
-        </tr>
+
         </tbody>
     </table>
 </div>
+
+<script src="JS/usuarios.js"></script>
 </body>
 </html>

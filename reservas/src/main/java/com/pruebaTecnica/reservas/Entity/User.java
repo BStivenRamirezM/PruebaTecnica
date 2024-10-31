@@ -1,5 +1,6 @@
 package com.pruebaTecnica.reservas.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -19,10 +20,12 @@ public class User {
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<UsuarioRol> usuarioRols;  // Relación con la tabla intermedia
 
     // Getters y Setters
@@ -67,6 +70,7 @@ public class User {
     }
 
     public boolean esAdministrador() {
-        return usuarioRols.stream().anyMatch(rol -> rol.getRol().getId() == 1); // Suponiendo que 1 es el ID de admin
+        return usuarioRols.stream().anyMatch(rol -> rol.getRol().getId() == 1);
     }
 }
+

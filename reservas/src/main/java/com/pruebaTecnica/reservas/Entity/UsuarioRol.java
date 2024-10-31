@@ -1,5 +1,6 @@
 package com.pruebaTecnica.reservas.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +11,7 @@ public class UsuarioRol {
     @Id
     @ManyToOne
     @JoinColumn(name = "usuario_id")
+    @JsonBackReference // Evita la serialización en el lado del "hijo"
     private User usuario;
 
     @Id

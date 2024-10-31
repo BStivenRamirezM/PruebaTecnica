@@ -114,3 +114,91 @@ a:hover {
 .btn:hover {
     background-color: #4b53d1;
 }
+
+/* Contenedor del dashboard */
+.dashboard-container {
+    max-width: 900px; /* Ancho máximo */
+    margin: 40px auto; /* Centrado vertical y horizontal */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Títulos específicos del dashboard */
+.dashboard-container h1 {
+    color: #333; /* Color del título principal */
+    text-align: center; /* Centrado */
+    margin-bottom: 10px; /* Margen inferior */
+}
+
+.dashboard-container h2 {
+    color: #555; /* Color del subtítulo */
+    text-align: center; /* Centrado */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Tabla dentro del dashboard */
+.dashboard-container table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Evita bordes duplicados */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Encabezado de la tabla */
+.dashboard-container thead {
+    background-color: #5c67f2; /* Fondo del encabezado */
+    color: white; /* Color del texto */
+}
+
+.dashboard-container th, .dashboard-container td {
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    border-bottom: 1px solid #ddd; /* Línea divisoria */
+}
+
+.dashboard-container tbody tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el mouse */
+}
+
+.dashboard-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color alternativo para filas pares */
+}
+
+.dashboard-container tbody tr:nth-child(odd) {
+    background-color: #fff; /* Color para filas impares */
+}
+
+/* Estilo de botones dentro del dashboard */
+.dashboard-container button {
+    padding: 8px 12px;
+    background-color: #5c67f2; /* Color de fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar */
+    transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+
+.dashboard-container button:hover {
+    background-color: #4b53d1; /* Color de fondo al pasar */
+}
+
+/* Enlaces dentro del dashboard */
+.dashboard-container a {
+    color: #5c67f2; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.dashboard-container a:hover {
+    text-decoration: underline; /* Subrayar al pasar */
+}
+.error-message {
+    background-color: #f8d7da; /* Color de fondo para el mensaje de error */
+    color: #721c24; /* Color del texto del mensaje de error */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #f5c6cb; /* Bordes */
+    border-radius: 5px;
+}
+

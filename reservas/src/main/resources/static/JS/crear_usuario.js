@@ -12,7 +12,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         rol: { id: 2 }
     };
 
-    fetch('/api/users', {
+    fetch('/api/users/createUser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,17 +20,36 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
         body: JSON.stringify(usuario)
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Error en el envío: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Usuario creado:', data);
+        if (response.ok) {
 
-        document.getElementById('userForm').reset();
+            document.getElementById('userForm').reset();
+
+        } else if (response.status === 409) {
+
+            mostrarMensajeError("Error: Email duplicado. Por favor, elige otro.");
+        } else {
+
+            mostrarMensajeError("Error: Email o Nombre usuario Duplicado");
+        }
     })
     .catch(error => {
         console.error('Hubo un problema:', error);
+        mostrarMensajeError("Hubo un problema al crear el usuario. Por favor, intenta nuevamente.");
     });
 });
+
+
+function mostrarMensajeError(mensaje) {
+    const mensajeDiv = document.createElement('div');
+    mensajeDiv.className = 'error-message';
+    mensajeDiv.innerText = mensaje;
+
+    const errorMessageContainer = document.getElementById('errorMessageContainer');
+    errorMessageContainer.innerHTML = '';
+    errorMessageContainer.appendChild(mensajeDiv);
+
+
+    setTimeout(() => {
+        mensajeDiv.remove();
+    }, 3000);
+}
