@@ -60,4 +60,10 @@ public class ReservaController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/usuario/{nombreUsuario}")
+    public ResponseEntity<List<Reserva>> getReservasByUsuario(@PathVariable String nombreUsuario) {
+        List<Reserva> reservas = reservaService.getReservasByUsuario(nombreUsuario);
+        return ResponseEntity.ok(reservas);
+    }
 }

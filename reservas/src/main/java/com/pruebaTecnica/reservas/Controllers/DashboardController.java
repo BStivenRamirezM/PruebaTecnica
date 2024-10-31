@@ -43,4 +43,16 @@ public class DashboardController {
         return "crear-reserva";
     }
 
+    @GetMapping("/mis-reservas")
+    public String misReservas(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("usuario", user);
+        return "mis-reservas";
+    }
+
 }

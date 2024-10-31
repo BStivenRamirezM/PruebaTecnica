@@ -9,15 +9,15 @@
 <div class="user-form-container">
     <h1>Crear Nueva Reserva</h1>
     <form id="reservaForm">
-        <!-- Campo oculto para el ID del usuario actual -->
+
         <input type="hidden" id="usuarioId" th:value="${usuario.id}">
 
-        <!-- Selector de Servicio -->
+
         <div class="form-group">
             <label for="servicioId">Servicio:</label>
             <select id="servicioId" name="servicioId" required>
                 <option value="">Seleccione un servicio</option>
-                <!-- Aquí se cargarán los servicios dinámicamente -->
+
             </select>
         </div>
 
@@ -32,7 +32,7 @@
             <label for="horaInicio">Hora de Inicio:</label>
             <select id="horaInicio" name="horaInicio" required>
                 <option value="">Seleccione hora de inicio</option>
-                <!-- Las horas se cargarán dinámicamente según disponibilidad -->
+
             </select>
         </div>
 
@@ -41,16 +41,16 @@
             <label for="horaFin">Hora de Fin:</label>
             <select id="horaFin" name="horaFin" required>
                 <option value="">Seleccione hora de fin</option>
-                <!-- Las horas se cargarán dinámicamente según disponibilidad -->
+
             </select>
         </div>
 
         <button type="submit" class="btn">Crear Reserva</button>
+        <a href="/mis-reservas" class="btn">Mis Reservas</a>
     </form>
 
     <div id="errorMessageContainer"></div>
 </div>
-
 
     <script src="JS/reserva.js"></script>
 

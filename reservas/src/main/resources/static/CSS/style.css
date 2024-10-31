@@ -268,3 +268,43 @@ table button:hover {
     border-radius: 3px;
     font-size: 12px;
 }
+
+/* Estilos para los estados de las reservas */
+.estado-confirmada {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.estado-pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* Estilos para la tabla de mis reservas */
+#misReservasTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#misReservasTable th,
+#misReservasTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#misReservasTable th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+#misReservasTable tr:hover {
+    background-color: #f5f5f5;
+}
