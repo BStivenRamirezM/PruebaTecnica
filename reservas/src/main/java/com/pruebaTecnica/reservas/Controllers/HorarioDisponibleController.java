@@ -16,6 +16,7 @@ public class HorarioDisponibleController {
 
     @PostMapping
     public ResponseEntity<HorarioDisponible> createHorarioDisponible(@RequestBody HorarioDisponible horarioDisponible) {
+
         HorarioDisponible createdHorario = horarioDisponibleService.saveHorarioDisponible(horarioDisponible);
         return ResponseEntity.ok(createdHorario);
     }
@@ -43,5 +44,15 @@ public class HorarioDisponibleController {
     public ResponseEntity<Void> deleteHorarioDisponible(@PathVariable Long id) {
         horarioDisponibleService.deleteHorarioDisponible(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/disponibilidad")
+    public ResponseEntity<List<HorarioDisponible>> getHorariosDisponibles(
+            @RequestParam Long servicioId,
+            @RequestParam String fecha) {
+
+        List<HorarioDisponible> horariosDisponibles = horarioDisponibleService
+                .findDisponiblesByServicioAndFecha(servicioId, fecha);
+        return ResponseEntity.ok(horariosDisponibles);
     }
 }

@@ -2,6 +2,9 @@ package com.pruebaTecnica.reservas.Entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Entity
 @Table(name = "reservas")
 public class Reserva {
@@ -19,18 +22,20 @@ public class Reserva {
     private Servicio servicio;
 
     @Column(name = "fecha_reserva", nullable = false)
-    private String fechaReserva; // Puede ser cambiado a LocalDate
+    private LocalDate fechaReserva;
 
     @Column(name = "hora_inicio", nullable = false)
-    private String horaInicio; // Puede ser cambiado a LocalTime
+    private LocalTime horaInicio;
 
     @Column(name = "hora_fin", nullable = false)
-    private String horaFin; // Puede ser cambiado a LocalTime
+    private LocalTime horaFin;
 
     @Column(name = "estado", nullable = false)
     private String estado;
 
     // Getters y Setters
+
+
     public Long getId() {
         return id;
     }
@@ -55,27 +60,27 @@ public class Reserva {
         this.servicio = servicio;
     }
 
-    public String getFechaReserva() {
+    public LocalDate getFechaReserva() {
         return fechaReserva;
     }
 
-    public void setFechaReserva(String fechaReserva) {
+    public void setFechaReserva(LocalDate fechaReserva) {
         this.fechaReserva = fechaReserva;
     }
 
-    public String getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(String horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public String getHoraFin() {
+    public LocalTime getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(String horaFin) {
+    public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
     }
 

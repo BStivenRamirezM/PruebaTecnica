@@ -38,4 +38,10 @@ public class HorarioDisponibleServiceImpl implements HorarioDisponibleService {
     public HorarioDisponible updateHorarioDisponible(HorarioDisponible horarioDisponible) {
         return horarioDisponibleRepository.save(horarioDisponible);
     }
+
+    @Override
+    public List<HorarioDisponible> findDisponiblesByServicioAndFecha(Long servicioId, String fecha) {
+
+        return horarioDisponibleRepository.findByServicioIdAndFechaAndDisponibleTrue(servicioId, fecha);
+    }
 }

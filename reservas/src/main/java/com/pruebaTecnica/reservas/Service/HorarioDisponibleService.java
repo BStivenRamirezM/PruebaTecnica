@@ -10,4 +10,5 @@ public interface HorarioDisponibleService {
     List<HorarioDisponible> getAllHorariosDisponibles();
     void deleteHorarioDisponible(Long id);
     HorarioDisponible updateHorarioDisponible(HorarioDisponible horarioDisponible);
+    List<HorarioDisponible> findDisponiblesByServicioAndFecha(Long servicioId, String fecha);
 }
