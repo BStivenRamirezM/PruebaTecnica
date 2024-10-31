@@ -28,6 +28,7 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
     .then(data => {
         console.log('Usuario creado:', data);
 
+        document.getElementById('userForm').reset();
     })
     .catch(error => {
         console.error('Hubo un problema:', error);
