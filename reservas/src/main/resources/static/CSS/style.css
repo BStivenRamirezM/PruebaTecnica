@@ -13,10 +13,19 @@ body {
 
 /* Estilos para contenedores */
 .user-form-container,
-.dashboard-container,
 .index-container,
 .login-container {
     max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor específico para el dashboard */
+.dashboard-container {
+    max-width: 1200px; /* Aumentado para acomodar las tablas */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -148,4 +157,114 @@ input[type="date"] {
     padding: 10px;
     border-radius: 5px;
     margin-top: 10px;
+}
+
+
+/* Estilos para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilos para los botones en la tabla */
+table button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+table button:hover {
+    background-color: #0056b3;
+}
+
+/* Espaciado entre tablas */
+.dashboard-container h2 {
+    margin-top: 30px;
+}
+
+/* Estilos específicos para las tablas en el dashboard */
+.dashboard-container table {
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Estilo para estados de reserva */
+.estado-pendiente {
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.estado-archivada {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* Mejoras en la responsividad */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+
+    .dashboard-container table {
+        font-size: 13px;
+    }
+
+    .dashboard-container th,
+    .dashboard-container td {
+        padding: 8px;
+    }
+}
+
+/* Estilos para acciones en tabla */
+.table-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.table-actions button {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+/* Estilo para estados de reserva */
+.estado-pendiente {
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.estado-reservada {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
 }

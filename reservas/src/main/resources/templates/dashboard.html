@@ -20,7 +20,7 @@
             <div class="modal-body">
                 <form id="userForm">
                     <input type="hidden" id="userId">
-                    <input type="hidden" id="contrasena"> <!-- Campo oculto para la contraseña -->
+                    <input type="hidden" id="contrasena">
                     <div class="form-group">
                         <label for="nombreUsuario">Nombre de Usuario</label>
                         <input type="text" id="nombreUsuario" class="form-control" required>
@@ -38,6 +38,8 @@
 
 <div class="dashboard-container">
     <h1>Dashboard de Admin</h1>
+
+    <!-- Tabla de Usuarios -->
     <h2>Usuarios Registrados</h2>
     <table id="usuariosTable">
         <thead>
@@ -50,14 +52,33 @@
         <tbody>
         </tbody>
     </table>
-</div>
 
+    <!-- Tabla de Reservas -->
+    <h2>Reservas</h2>
+    <table id="reservasTable">
+        <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Servicio</th>
+            <th>Fecha</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
 
 <div id="errorMessageContainer"></div>
 
-<script src="JS/usuarios.js"></script>
+<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/JS/usuarios.js"></script>
+<script src="/JS/reservas-admin.js"></script>
 
 </body>
 </html>

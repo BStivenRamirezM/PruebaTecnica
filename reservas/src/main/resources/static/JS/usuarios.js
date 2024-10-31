@@ -1,40 +1,48 @@
-document.getElementById('userForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
 
-    const usuario = obtenerDatosFormulario();
-    const action = event.submitter.dataset.action;
+    const userForm = document.getElementById('userForm');
+    if (userForm) {
+        userForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    const url = action === 'update' ? `/api/users/edit/${usuario.id}` : '/api/users/createUser';
+            const usuario = obtenerDatosFormulario();
+            const action = event.submitter.dataset.action;
 
-    if (action === 'update' && !usuario.id) {
-        mostrarMensajeError("Error: El ID del usuario no está definido.");
-        return;
+            const url = action === 'update' ? `/api/users/edit/${usuario.id}` : '/api/users/createUser';
+
+            if (action === 'update' && !usuario.id) {
+                mostrarMensajeError("Error: El ID del usuario no está definido.");
+                return;
+            }
+
+            fetch(url, {
+                method: action === 'update' ? 'PUT' : 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(usuario)
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('userForm').reset();
+                    fetchUsers();
+                    mostrarMensajeExito(action === 'update' ? "Usuario actualizado con éxito." : "Usuario creado con éxito.");
+                } else if (response.status === 409) {
+                    mostrarMensajeError("Error: Email duplicado. Por favor, elige otro.");
+                } else {
+                    mostrarMensajeError("Error: Email o Nombre usuario duplicado");
+                }
+            })
+            .catch(error => {
+                console.error('Hubo un problema:', error);
+                mostrarMensajeError("Hubo un problema al procesar la solicitud. Por favor, intenta nuevamente.");
+            });
+        });
     }
 
-    fetch(url, {
-        method: action === 'update' ? 'PUT' : 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(usuario)
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('userForm').reset();
-            fetchUsers();
-            mostrarMensajeExito(action === 'update' ? "Usuario actualizado con éxito." : "Usuario creado con éxito.");
-        } else if (response.status === 409) {
-            mostrarMensajeError("Error: Email duplicado. Por favor, elige otro.");
-        } else {
-            mostrarMensajeError("Error: Email o Nombre usuario duplicado");
-        }
-    })
-    .catch(error => {
-        console.error('Hubo un problema:', error);
-        mostrarMensajeError("Hubo un problema al procesar la solicitud. Por favor, intenta nuevamente.");
-    });
+    // Cargar usuarios al iniciar la página
+    fetchUsers();
 });
-
 function obtenerDatosFormulario() {
     const usuario = {
         nombreUsuario: document.getElementById('nombreUsuario').value,

@@ -37,16 +37,27 @@ public class ReservaController {
         return ResponseEntity.ok(reservas);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Reserva> updateReserva(@PathVariable Long id, @RequestBody Reserva reserva) {
-        reserva.setId(id);
-        Reserva updatedReserva = reservaService.updateReserva(reserva);
-        return ResponseEntity.ok(updatedReserva);
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReserva(@PathVariable Long id) {
         reservaService.deleteReserva(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Reserva> updateReserva(@PathVariable Long id, @RequestBody Reserva reserva) {
+        try {
+            Reserva existingReserva = reservaService.getReservaById(id);
+            if (existingReserva == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            existingReserva.setEstado(reserva.getEstado());
+
+            Reserva updatedReserva = reservaService.updateReserva(existingReserva);
+            return ResponseEntity.ok(updatedReserva);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
