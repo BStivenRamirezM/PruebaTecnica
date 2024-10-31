@@ -17,8 +17,12 @@ public class ReservaController {
 
     @PostMapping
     public ResponseEntity<Reserva> createReserva(@RequestBody Reserva reserva) {
-        Reserva createdReserva = reservaService.saveReserva(reserva);
-        return ResponseEntity.ok(createdReserva);
+        try {
+            Reserva nuevaReserva = reservaService.saveReserva(reserva);
+            return ResponseEntity.ok(nuevaReserva);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/{id}")

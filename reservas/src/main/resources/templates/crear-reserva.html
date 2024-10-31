@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Reserva</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+<div class="user-form-container">
+    <h1>Crear Nueva Reserva</h1>
+    <form id="reservaForm">
+        <!-- Campo oculto para el ID del usuario actual -->
+        <input type="hidden" id="usuarioId" th:value="${usuario.id}">
+
+        <!-- Selector de Servicio -->
+        <div class="form-group">
+            <label for="servicioId">Servicio:</label>
+            <select id="servicioId" name="servicioId" required>
+                <option value="">Seleccione un servicio</option>
+                <!-- Aquí se cargarán los servicios dinámicamente -->
+            </select>
+        </div>
+
+        <!-- Fecha de Reserva -->
+        <div class="form-group">
+            <label for="fechaReserva">Fecha:</label>
+            <input type="date" id="fechaReserva" name="fechaReserva" required>
+        </div>
+
+        <!-- Hora de Inicio -->
+        <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" name="horaInicio" required>
+                <option value="">Seleccione hora de inicio</option>
+                <!-- Las horas se cargarán dinámicamente según disponibilidad -->
+            </select>
+        </div>
+
+        <!-- Hora de Fin -->
+        <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" name="horaFin" required>
+                <option value="">Seleccione hora de fin</option>
+                <!-- Las horas se cargarán dinámicamente según disponibilidad -->
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Crear Reserva</button>
+    </form>
+
+    <div id="errorMessageContainer"></div>
+</div>
+
+
+    <script src="JS/reserva.js"></script>
+
+</body>
+</html>

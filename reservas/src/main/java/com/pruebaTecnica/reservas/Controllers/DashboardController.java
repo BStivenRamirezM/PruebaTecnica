@@ -32,16 +32,15 @@ public class DashboardController {
         return "dashboard";
     }
 
-    @GetMapping("/userDashboard")
-    public String userDashboard(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
 
+    @GetMapping("/crear-reserva")
+    public String mostrarFormularioReserva(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
         if (user == null) {
             return "redirect:/login";
         }
-
         model.addAttribute("usuario", user);
-        return "userDashboard"; // crear otro html para usuario normales
+        return "crear-reserva";
     }
 
 }

@@ -26,9 +26,9 @@ public class LoginController {
         return "index";
     }
 
-    @GetMapping("/crear_usuario") // Nuevo método para manejar la ruta
+    @GetMapping("/crear_usuario")
     public String crearUsuario() {
-        return "crear_usuario"; // Devuelve la vista crear_usuario.html
+        return "crear_usuario";
     }
 
     @PostMapping("/login")
@@ -47,7 +47,7 @@ public class LoginController {
             if (user.esAdministrador()) {
                 return "redirect:/dashboard"; // Redirigir al dashboard si es admin
             } else {
-                return "redirect:/userDashboard"; // Redirigir a una vista diferente para usuarios normales
+                return "redirect:/crear-reserva"; // Redirigir a una vista diferente para usuarios normales
             }
         } else {
             model.addAttribute("error", "Credenciales inválidas");
